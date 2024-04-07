@@ -1,3 +1,6 @@
+/*
+Package errcheck contains an analyzer that checks for unchecked errors.
+*/
 package errcheck
 
 import (
@@ -7,6 +10,7 @@ import (
 	"golang.org/x/tools/go/analysis"
 )
 
+// ErrCheckAnalyzer analyze unhandled errors
 var ErrCheckAnalyzer = &analysis.Analyzer{
 	Name: "errcheck",
 	Doc:  "check for unchecked errors",
