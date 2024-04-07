@@ -74,10 +74,13 @@ func run(pass *analysis.Pass) (interface{}, error) {
 					errfunc(x)
 				}
 			case *ast.GoStmt:
-				// todo
-
+				if isReturnError(pass, x.Call) {
+					pass.Reportf(x.Go, "expression returns unchecked error")
+				}
 			case *ast.DeferStmt:
-				// todo
+				if isReturnError(pass, x.Call) {
+					pass.Reportf(x.Defer, "expression returns unchecked error")
+				}
 			}
 			return true
 		})
